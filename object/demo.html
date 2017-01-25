@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<img class="lazying" data-src="http://pic1.16pic.com/00/23/02/16pic_2302179_b.jpg"/>
+	</head>
+	<body>
+		<!--<script src="lazyloading.js"></script>
+		<script>
+			$(".lazying").lazyloading();
+		</script>-->
+		<script>
+/*		   
+			var $isType = function(type, obj) {
+                var _class = Object.prototype.toString.call(obj).slice(8, -1);
+                return obj !== undefined && obj !== null && _class === type;
+            };
+			var $deepExtend = function(out) {
+				debugger;
+                out = out || {};
+                for (var i = 1; i < arguments.length; i++) {
+                    var obj = arguments[i];
+                    if (!obj)
+                        continue;
+                    for (var key in obj) {
+                        if (obj.hasOwnProperty(key)) {
+                            if ($isType('Object', obj[key]) && obj[key] !== null)
+                                $deepExtend(out[key], obj[key]);
+                            else
+                                out[key] = obj[key];
+                        }
+                    }
+                }
+                
+                return out;
+            };
+            
+             var obj=$deepExtend({name:"Jade",sex:"men",city:"Guangzhou"},{name:"xiaoming",sex:"woman",province:"Guangdong"});
+			console.log(obj);*/
+			
+            function human(){
+            	var _self=this;
+            	//改变原本构造函数不能传参的问题
+            	this.init.apply(this,arguments); 
+            	_self.settings={
+            		onInit:function(){
+            			/*console.log("number 1");*/
+            			console.log(this);//这里是指_self.settings对象或者jack，具体看调用时
+            			console.log(_self);//这里是指实例化的对象jack
+            			/*_self.xxx();//1.这样子用可以*/
+            			this.xxx();//2.这样子用不行
+            		}
+            	};
+            }
+            human.prototype={
+            	init:function(name){
+            		this.name=name;
+            	},
+            	say:function(){
+	            	/*this.settings.onInit();//1.这样子用是可以*/
+	            	/*this.settings.onInit();//2.这样子用是不行*/
+	            	/*this.settings.onInit.apply(this);*///2.这样子就可以用
+	            	this.settings.onInit.bind(this)();//2.这样子使用也是可以的
+	            	/*this.settings.onInit.call(this);*///2.这样子使用也是可以的
+	            	/*console.log(this.name);*/
+	            	
+	            },
+	            xxx:function(){
+	            	console.log("123");
+	            }
+            
+            };
+            var jack=new human("nick");
+            jack.say();
+
+		</script>
+	</body>
+</html>
