@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{display:inline-block;width:100px;height:50px;line-height:50px;text-align:center;background-color:#00BFFF;color:#fff;margin:5px;}
+		</style>
+	</head>
+	<body>
+		<a>1</a>
+		<a>2</a>
+		<a>3</a>
+		<a>4</a>
+		<script>
+			var arrs=document.getElementsByTagName("a");
+			//Array.protype.slice==[].slice
+			Array.prototype.slice.call(arrs).forEach(function(i){
+				i.addEventListener("click",function(){
+					alert(this.innerText);
+				});
+			});
+			//arguments是函数自带的参数，必须依赖在函数，我自己的理解
+			/*console.log(arguments instanceof Array);*/
+
+		   (function(){
+		   		console.log(arguments instanceof Array);
+		   		console.log(arguments instanceof Object);
+		   })();
+		   
+		   var a=function(f){
+		   	  console.log(arguments);
+		   	  console.log([].slice.call(arguments,1));
+		   	  console.log(arguments.slice(1));//因为arguments不是数组类型
+		   };
+		   a("show",[1,2,3,4],123);
+		</script>
+	</body>
+</html>
