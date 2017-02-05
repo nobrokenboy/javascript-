@@ -31,9 +31,11 @@
 		   var a=function(f){
 		   	  console.log(arguments);
 		   	  console.log([].slice.call(arguments,1));
-		   	  console.log(arguments.slice(1));//因为arguments不是数组类型
+		   	 /* console.log(arguments.slice(1));//因为arguments不是数组类型*/
+/*		   	  console.log(arguments.callee());*/
 		   };
 		   a("show",[1,2,3,4],123);
+		   
 		</script>
 	</body>
 </html>
