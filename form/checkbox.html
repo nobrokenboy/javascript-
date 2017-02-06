@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form onsubmit="return false;">
+			<p>1.选中你喜欢的事物</p>
+			<div class="control-group">
+				<input type="checkbox" name="favor" value="flowers">
+				<label>种花</label>
+			</div>
+			<div class="control-group">
+				<input type="checkbox" name="favor" value="travel">
+				<label>旅游</label>
+			</div>
+			<div class="control-group">
+				<input type="checkbox" name="favor" value="movie">
+				<label>看电影</label>
+			</div>
+			<div class="control-group">
+				<input type="checkbox" name="favor" value="shopping">
+				<label>逛街</label>
+			</div>
+			<div>
+				<button id="btnSubmit">提交</button>
+			</div>
+		</form>
+		<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+		   //设置将第一个复选框勾选
+		   $(document.getElementsByName("favor")[0]).attr("checked",true);
+		   //获取提交的按钮
+		   var submitBtn=document.querySelector("#btnSubmit");
+		   submitBtn.addEventListener("click",function(){
+		   	   //获取文本框选项
+		   	   getFavorArrs();
+		   });
+		   
+		   function getFavorArrs(){
+		   	   var arr=[];
+		   	   var favorCheckbox=document.getElementsByName("favor");
+		   	   for(var i=0,j=favorCheckbox.length;i<j;i++){
+		   	   	  if(favorCheckbox[i].checked){
+		   	   	  	arr.push(favorCheckbox[i].value);
+		   	   	  }
+		   	   }
+		   	   console.log(arr);
+		   	   return arr;
+		   }
+		</script>
+	</body>
+</html>
