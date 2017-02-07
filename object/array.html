@@ -15,7 +15,13 @@
 		<script>
 			var arrs=document.getElementsByTagName("a");
 			//Array.protype.slice==[].slice
-			Array.prototype.slice.call(arrs).forEach(function(i){
+			//以下两种方式可以同样实现
+			/*Array.prototype.slice.call(arrs).forEach(function(i){
+				i.addEventListener("click",function(){
+					alert(this.innerText);
+				});
+			});*/
+			Array.prototype.forEach.call(arrs,function(i){
 				i.addEventListener("click",function(){
 					alert(this.innerText);
 				});
