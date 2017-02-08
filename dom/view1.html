@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0;padding:0;}
+			img{
+				width:100%;
+				height:auto;
+			}
+		</style>
+	</head>
+	<body>
+		<img class="num1" src="http://www.cjzs.com/images/index/banner5.jpg"/>
+		<img class="num2" src="http://www.cjzs.com/images/index/banner1.jpg"/>
+		<img class="num3" src="http://www.cjzs.com/images/index/banner2.jpg"/>
+	</body>
+	<script>
+		var imgArr=document.getElementsByTagName("img");
+		Array.prototype.slice.call(imgArr).forEach(function(i){
+			var offsetTop=i.offsetTop;
+			console.log(i.clientHeight);
+			console.log(offsetTop);
+		});
+	</script>
+</html>
