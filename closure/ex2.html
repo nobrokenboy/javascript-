@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr=[10,20,30,20];
+			for(var i=0,j=arr.length;i<j;i++){
+				setTimeout(function(i_local) {
+			    return function() {
+			      console.log('The index of this number is: ' + i_local);
+			    }
+			  }(i), 3000);
+			}
+		</script>
+	</body>
+</html>
