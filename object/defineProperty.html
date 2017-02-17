@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a={};
+			Object.defineProperty(a,"name",{
+			/*	value:"小明",
+				writable:false,*/
+				enumerable:false,
+				configurable:false,//总开关,第一次设置为false之后，再次设置为true就不行了，Uncaught TypeError: Cannot redefine property: name
+				set:function(newValue){
+					console.log("即将要赋值"+newValue);
+				},
+				get:function(){
+					return 2;
+				}
+			});
+			/*Object.defineProperty(a,"name",{
+				configurable:true
+			});*/
+			a.name="Jack";
+			console.log(a.name);
+		</script>
+	</body>
+</html>
