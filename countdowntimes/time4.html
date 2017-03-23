@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>获取倒计时的时间节点进行倒计时</title>
+	</head>
+	<body>
+		<button id="setTime" >开始倒计时</button>
+		<div class="time"></div>
+		<script>
+		 var exTime=1490265000;
+		 var exTimes;//进行倒数的时间段，变化的
+		 var setTimeBtn=document.getElementById("setTime");
+		 var setTimeValue=document.getElementsByClassName("time")[0];
+		 setTimeBtn.addEventListener("click",function(){
+		 	setTimeFun();
+		 	var t=setInterval(function(){
+		 		setTimeFun();
+		 	},1000);
+		 });
+		 function setTimeFun(){
+		 	var nowDate=new Date().getTime()/1000;
+		 	var d=0;
+	 		var h=0;
+	 		var m=0;
+	 		var s=0;
+	 		exTimes=exTime-nowDate;
+	 		if(exTimes>0){
+	 			d=Math.floor(exTimes/60/60/24);
+	 			h=Math.floor(exTimes/60/60%24);
+	 			m=Math.floor(exTimes/60%60);
+	 			//5390%60=89....50
+	 			s=Math.floor(exTimes%60);
+	 		}else{
+	 			clearInterval(t);
+	 		}
+	 		h=h>9?h:"0"+h;
+	 		m=m>9?m:"0"+m;
+	 		s=s>9?s:"0"+s;
+	 		setTimeValue.innerHTML=h+":"+m+":"+s;
+		 }
+		 
+		</script>
+	</body>
+</html>

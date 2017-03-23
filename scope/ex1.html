@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/**/
+			var a=1;
+			function test(){
+				//局部作用域，先在这里查找
+				var a=100;
+				console.log(a);
+			}
+			test();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/*在函数体内查找abc是否有没有定义，没有在函数外查找，再没有的话，就在函数外定义*/
+		    test();
+			function test(){//懂
+			/* console.log(abc);输出undefined*/
+			 abc = 80;
+			 alert(abc);//80
+			}
+			
+			/*上面等价于*/
+		    var test=function(){
+		    	abc=80;
+		    	alert(abc);
+		    };
+		    var abc;
+		    test();
+		    
+			
+			d();
+			function d(){//懂
+				console.log(d);//函数d
+				d=88;
+				alert(d);//88
+			}
+			/*上面等价于*/
+			var d=function(){
+				console.log(d);
+				d=88;
+				alert(d);
+			};
+			d();
+			
+			(function(){//懂
+				/* console.log(a);输出undefined*/
+				a=10;
+				alert(a);//10
+			})();
+			
+			(function bc(){//懂
+				/* console.log(b);输出undefined*/
+				b=10;
+				alert(b);//10
+			})();
+			
+			(function c(){//不明白
+				console.log(c);//输出函数c，懂
+				c=1000;
+				alert(c);//输出函数c，不懂
+			})();
+			
+			/*等价于*/
+			/*var c=function(){
+				console.log(c);
+				c=10000;
+				alert(c);
+			}
+			c();*/
+			(function f(){
+				var f;
+				console.log(f);//undefined
+				f=1000;
+				alert(f);//1000
+			})();
+			
+			
+			/*当前作用域内是否有 var foo 的定义。
+			函数形式参数是否有使用 foo 名称的。
+			函数自身是否叫做 foo。*/
+			(function e(e){//明白
+				console.log(e);//34
+				e=2000;
+				alert(e);//2000
+			})(34);
+			
+			(function g(g){//大概明白
+				var g;
+				console.log(g);//34,因为形参g=34
+				g=20000;
+				alert(g);//20000
+			})(34);
+		
+			
+			
+			
+		</script>
+	</body>
+</html>
