@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				font: 200%/1.45 charter;
+			}
+			.hello::before {
+				content: '\00A7';
+				letter-spacing: .1em;
+			}
+		</style>
+	</head>
+	<body>
+		 <article>The seller can, under Business Law <ref class="hello">1782</ref>, offer a full refund to buyers. <ref class="hello">1782ddd</ref><ref class="hello">1782dddd</ref></article>
+		<script>
+				function ruleSelector(selector) {
+					function uni(selector) {
+						return selector.replace(/::/g, ':')
+					}
+					return Array.prototype.filter.call(Array.prototype.concat.apply([], Array.prototype.map.call(document.styleSheets, function(x) {
+						return Array.prototype.slice.call(x.cssRules);
+					})), function(x) {
+						return uni(x.selectorText) === uni(selector);
+					});
+				}
+			
+				var toggle = false, 
+					pseudo = ruleSelector(".hello::before").slice(-1);
+				console.log(".hello::before");
+				pseudo.forEach(function(item,index){
+					switch(index){
+						case 0:
+							item.style.color="blue";
+							break;
+						case 1:
+							item.style.color="red";
+							break;
+						case 2:
+							item.style.color="green";
+							break;
+					}
+				});
+				/*document.querySelector("article").onclick = function() {
+					pseudo.forEach(function(rule) {
+						if (toggle = !toggle) 
+							rule.style.color = "red";
+						else
+							rule.style.color = "black";
+					});
+				}*/
+		</script>
+	</body>
+</html>

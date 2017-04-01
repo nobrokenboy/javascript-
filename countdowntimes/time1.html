@@ -17,7 +17,7 @@ function settime(val) {
 		val.value="免费获取验证码"; 
 		countdown = 60; 
 		//加上return 是因为clearTimeout(t)没有效果
-		/*return;*/
+		return;
 	} else { 
 		val.setAttribute("disabled", true); 
 		val.value="重新发送(" + countdown + ")"; 
