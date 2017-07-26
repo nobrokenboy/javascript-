@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{text-align: center;}
+		</style>
+	</head>
+	<body>
+		<div id="testAPP">
+			<table border="1px solid #eee" align="center">
+				<thead>
+					<th width="120">姓名</th>
+					<th width="120">分数</th>
+					<th width="120">性别</th>
+					<th width="120">审核状态</th>
+				</thead>
+				<tbody>
+					<tr v-for="(item,key) in listData">
+						<td>{{item.name}}</td>
+						<td>{{item.score}}</td>
+						<td>{{item.sex}}</td>
+						<td>{{dealStatus(item.status)}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el:"#testAPP",
+			data:{
+				listData:[],
+				testArr:[{//相当于后台的数据
+					name:"小米",
+					sex:"man",
+					score:100,
+					status:0
+				},
+				{
+					name:"轩昂",
+					sex:"man",
+					score:98,
+					status:1
+				},
+				{
+					name:"逗得",
+					sex:"man",
+					score:99,
+					status:2
+				},
+				{
+					name:"阳朔",
+					sex:"man",
+					score:97,
+					status:1
+				},
+				{
+					name:"荣云",
+					sex:"man",
+					score:92,
+					status:0
+				}]
+			},
+			mounted:function(){
+				var self=this;
+				self.listData=self.testArr;
+			},
+			methods:{
+				dealStatus:function(value){
+					switch(value){
+							case 0:
+								value="已保存";
+								break;
+							case 1:
+								value="已提交";
+								break;
+							case 2:
+								value="已审核";
+								break;
+						}
+					return value;
+				}
+			}
+		});
+	</script>
+</html>
