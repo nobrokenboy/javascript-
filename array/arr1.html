@@ -25,13 +25,52 @@
 					</tr>
 				</tbody>
 			</table>
+			<button @click="changeNum">{{number}}</button>
+			<button-counter :filter-method="dealStatus" :tips="hello" :is-has-filter-method="true"></button-counter>
+			<button-counter :filter-method="dealStatus" :tips="hello" :is-has-filter-method="true"></button-counter>
+			<button-counter :tips="hello"></button-counter>
 		</div>
 	</body>
 	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
 	<script>
+		Vue.component('button-counter', {
+	 		  props:{
+	 		  	 filterMethod:{
+	 		  	 	type:Function,
+	 		  	 	required: false
+	 		  	 	
+	 		  	 },
+	 		  	 tips:Number,
+	 		  	 isHasFilterMethod:{
+	 		  	 	type:Boolean,
+	 		  	 	require:false,
+	 		  	 	default:false
+	 		  	 }
+	 		  },
+			  template:'<div>\
+			  <button v-if="isHasFilterMethod" v-on:click="increment2">{{ filterMethod(tips)}}</button>\
+			  <button v-if="!isHasFilterMethod" v-on:click="increment2">{{tips}}</button>\
+			  </div>',
+			  data:function () {
+			    return {
+			      counter: 0
+			    }
+			  },
+			  mounted:function(){
+			  	console.log(this.isHasFilterMethod);
+			  },
+			  methods:{
+			    increment2: function () {
+			      this.counter += 1
+			      debugger;
+			      this.$emit('increment2')
+			    }
+			  },
+			});
 		var vm=new Vue({
 			el:"#testAPP",
 			data:{
+				number:0,
 				listData:[],
 				testArr:[{//相当于后台的数据
 					name:"小米",
@@ -62,7 +101,8 @@
 					sex:"man",
 					score:92,
 					status:0
-				}]
+				}],
+				hello:1
 			},
 			mounted:function(){
 				var self=this;
@@ -82,6 +122,9 @@
 								break;
 						}
 					return value;
+				},
+				changeNum:function(){
+					this.number++;
 				}
 			}
 		});
